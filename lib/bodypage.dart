@@ -14,7 +14,7 @@ class BodyPage extends StatefulWidget {
 
 class _BodyPageState extends State<BodyPage> {
   bool _bSwitch = true;
-  String sText = "OFF";
+  String sText = "ON";
   Color fontColor = Colors.grey[200], batteryColor = Colors.green[700];
   Battery _battery = Battery();
   StreamSubscription<BatteryState> _batteryStateSubscription;
