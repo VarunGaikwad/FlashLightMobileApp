@@ -1,4 +1,4 @@
-# binary_clock
+# FlashLight Application
 
 A new Flutter project.
 
