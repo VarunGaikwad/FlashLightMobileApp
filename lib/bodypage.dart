@@ -16,22 +16,26 @@ class _BodyPageState extends State<BodyPage> {
   bool _bSwitch = true;
   String sText = "OFF";
   Color fontColor = Colors.grey[200], batteryColor = Colors.green[700];
-  Battery _battery = Battery();
+  final Battery _battery = Battery();
   StreamSubscription<BatteryState> _batteryStateSubscription;
   int batteryLvl = 0;
 
+  @override
   void initState() {
     super.initState();
-    batteryLvl = batteryPercentage();
     _batteryStateSubscription =
         _battery.onBatteryStateChanged.listen((BatteryState state) {
-      setState(() async {
-        batteryLvl = await _battery.batteryLevel;
-        batteryColor = batteryLvl <= 20
-            ? Colors.red[900]
-            : batteryLvl <= 50
-                ? Colors.orange[800]
-                : Colors.green[900];
+      _battery.batteryLevel.then((level) {
+        this.setState(() {
+          batteryLvl = level;
+          batteryColor = level <= 100
+              ? Colors.green[700]
+              : level <= 50
+                  ? Colors.deepOrange[800]
+                  : level <= 20
+                      ? Colors.red[900]
+                      : Colors.red;
+        });
       });
     });
   }
