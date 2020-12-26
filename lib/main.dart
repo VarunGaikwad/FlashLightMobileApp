@@ -1,4 +1,4 @@
-import 'package:binary_clock/bodypage.dart';
+import 'package:Flashlight/bodypage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
